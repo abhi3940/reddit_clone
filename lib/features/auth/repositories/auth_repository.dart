@@ -91,4 +91,9 @@ class AuthRepository {
     return _users.doc(uid).snapshots().map(
         (event) => UserModel.fromMap(event.data() as Map<String, dynamic>));
   }
+
+  void logOut() async {
+    await _auth.signOut();
+    await _googleSignIn.signOut();
+  }
 }
