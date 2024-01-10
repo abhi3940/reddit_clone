@@ -75,7 +75,8 @@ class CommunityController extends StateNotifier<bool> {
     final user = _ref.read(userProvider);
     Either<Failure, void> res;
     if (community.members.contains(user?.uid)) {
-      res = await _communityRepository.leaveCommunity(community.name, user!.uid);
+      res =
+          await _communityRepository.leaveCommunity(community.name, user!.uid);
     } else {
       res = await _communityRepository.joinCommunity(community.name, user!.uid);
     }
@@ -133,5 +134,12 @@ class CommunityController extends StateNotifier<bool> {
 
   Stream<List<Community>> searchCommunities(String query) {
     return _communityRepository.searchCommunities(query);
+  }
+
+  void addMods(
+      String communityName, List<String> uids, BuildContext context) async {
+    final res = await _communityRepository.addMods(communityName, uids);
+    res.fold((l) => showSnackBar(context, l.message),
+        (r) => Routemaster.of(context).pop());
   }
 }

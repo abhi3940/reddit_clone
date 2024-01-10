@@ -8,7 +8,6 @@ import 'package:reddit_clone/features/communities/controller/community_controlle
 import 'package:reddit_clone/models/community_model.dart';
 import 'package:routemaster/routemaster.dart';
 
-
 class CommunityScreen extends ConsumerWidget {
   final String name;
   const CommunityScreen({
@@ -17,16 +16,17 @@ class CommunityScreen extends ConsumerWidget {
   });
 
   void navigateToModTools(BuildContext context, Community community) {
-    Routemaster.of(context).push('/mod-tools/${community.name}}');
+    Routemaster.of(context).push('/mod-tools/${community.name}');
   }
 
-  void joinCommunity(BuildContext context, Community community, WidgetRef ref){
-    ref.read(communityControllerProvider.notifier).joinCommunity(community, context);
+  void joinCommunity(BuildContext context, Community community, WidgetRef ref) {
+    ref
+        .read(communityControllerProvider.notifier)
+        .joinCommunity(community, context);
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print(name);
 
     final user = ref.watch(userProvider)!;
     final isGuest = !user.isAuthenticated;
@@ -77,7 +77,8 @@ class CommunityScreen extends ConsumerWidget {
                                 community.mods.contains(user.uid)
                                     ? OutlinedButton(
                                         onPressed: () {
-                                          navigateToModTools(context,community);
+                                          navigateToModTools(
+                                              context, community);
                                         },
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
@@ -90,7 +91,8 @@ class CommunityScreen extends ConsumerWidget {
                                         child: const Text('Mod Tools'),
                                       )
                                     : OutlinedButton(
-                                        onPressed: ()=> joinCommunity(context, community, ref),
+                                        onPressed: () => joinCommunity(
+                                            context, community, ref),
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
