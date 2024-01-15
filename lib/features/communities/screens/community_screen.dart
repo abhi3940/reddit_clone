@@ -131,7 +131,7 @@ class CommunityScreen extends ConsumerWidget {
                       );
                     },
                     error: (error, stackTrace) {
-                      print(error);
+
                       return ErrorText(error: error.toString());
                     },
                     loading: () => const Loader(),

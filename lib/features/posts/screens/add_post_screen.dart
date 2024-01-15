@@ -9,6 +9,7 @@ class AddPostScreen extends ConsumerWidget {
   void naviateTo(BuildContext context, String type) {
     Routemaster.of(context).push('/add-post/$type');
   }
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

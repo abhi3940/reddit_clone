@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone/core/common/error.dart';
 import 'package:reddit_clone/core/common/loader.dart';
+import 'package:reddit_clone/core/common/sign_in_button.dart';
+import 'package:reddit_clone/features/auth/contorller/auth_controller.dart';
 import 'package:reddit_clone/features/communities/controller/community_controller.dart';
 import 'package:reddit_clone/models/community_model.dart';
 import 'package:routemaster/routemaster.dart';
@@ -20,15 +22,19 @@ class CommunityDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final user = ref.watch(userProvider)!;
+    final isGuest = !user.isAuthenticated;
     return Drawer(
       child: SafeArea(
           child: Column(
         children: [
+          isGuest?const SignInButton(isFromLogin: false,):
           ListTile(
             leading: const Icon(Icons.add),
             title: const Text('Add another community'),
             onTap: () => navigateToCreateCommunity(context),
           ),
+          if(!isGuest)
           ref.watch(userCommunitiesProvider).when(
               data: (communities) => Expanded(
                       child: ListView.builder(

@@ -14,25 +14,28 @@ class HomeScreen extends ConsumerStatefulWidget {
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
-  class _HomeScreenState extends ConsumerState<HomeScreen> {
-    int _page =0;
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  int _page = 0;
 
   void displayDrawer(BuildContext context) {
     Scaffold.of(context).openDrawer();
   }
+
   void displayEndDrawer(BuildContext context) {
     Scaffold.of(context).openEndDrawer();
   }
+
   void onPageChanged(int page) {
     setState(() {
       _page = page;
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(userProvider)!;
+    final isGuest = !user.isAuthenticated;
     final currentTheme = ref.watch(ThemeNotifierProvider);
     return Scaffold(
       appBar: AppBar(
@@ -54,32 +57,29 @@ class HomeScreen extends ConsumerStatefulWidget {
                   context: context, delegate: SearchCommunityDeligates(ref));
             },
           ),
-          Builder(
-            builder: (context) {
-              return IconButton(
-                icon: CircleAvatar(
-                  backgroundImage: NetworkImage(user.profilePic),
-                ),
-                onPressed: ()=> displayEndDrawer(context),
-              );
-            }
-          ),
+          Builder(builder: (context) {
+            return IconButton(
+              icon: CircleAvatar(
+                backgroundImage: NetworkImage(user.profilePic),
+              ),
+              onPressed: () => displayEndDrawer(context),
+            );
+          }),
         ],
       ),
       body: Constants.tabWidgets[_page],
       drawer: const CommunityDrawer(),
-      endDrawer: const ProfileDrawer(),
-      bottomNavigationBar: CupertinoTabBar(
+      endDrawer: isGuest? null :  const ProfileDrawer(),
+      bottomNavigationBar: isGuest? null : CupertinoTabBar(
         activeColor: currentTheme.iconTheme.color,
         backgroundColor: currentTheme.backgroundColor,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''), 
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),],
-          onTap: onPageChanged,
-          currentIndex: _page,
-      ) ,
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+        ],
+        onTap: onPageChanged,
+        currentIndex: _page,
+      ),
     );
   }
-  
-  
 }

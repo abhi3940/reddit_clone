@@ -44,6 +44,19 @@ class UserProfileRepository {
               .toList(),
         );
   }
+  FutureEitherVoid updateUserKarma(UserModel user) async {
+    try {
+      return right(_user.doc(user.uid).update({
+        'karma': user.karma,
+      }));
+    } on FirebaseException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+  
+
 
   CollectionReference get _user =>
       _firestore.collection(FirebaseConstants.usersCollection);

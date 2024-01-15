@@ -9,6 +9,10 @@ import 'package:reddit_clone/theme/pallete.dart';
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
 
+  void signInASGuest(WidgetRef ref, BuildContext context) {
+    ref.read(authContollerProvider.notifier).signInAsGuest(context);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = ref.watch(authContollerProvider);
@@ -17,7 +21,7 @@ class LoginScreen extends ConsumerWidget {
         title: Image.asset(Constants.logoPath, height: 40),
         actions: [
           TextButton(
-              onPressed: () {},
+              onPressed: () => signInASGuest(ref, context),
               child: Text('Skip', style: TextStyle(color: Pallete.blueColor)))
         ],
       ),
