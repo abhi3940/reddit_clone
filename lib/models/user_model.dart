@@ -77,7 +77,7 @@ class UserModel {
         other.uid == uid &&
         other.isAuthenticated == isAuthenticated &&
         other.karma == karma;
-        other.awards == awards;
+
   }
 
   @override
@@ -88,6 +88,6 @@ class UserModel {
         uid.hashCode ^
         isAuthenticated.hashCode ^
         karma.hashCode;
-        awards.hashCode;
+
   }
 }

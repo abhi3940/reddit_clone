@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone/core/common/error.dart';
 import 'package:reddit_clone/core/common/loader.dart';
 import 'package:reddit_clone/core/constants/constants.dart';
-import 'package:reddit_clone/core/providers/firebase_providers.dart';
+
 import 'package:reddit_clone/features/auth/contorller/auth_controller.dart';
-import 'package:reddit_clone/features/auth/screens/login_screen.dart';
+
 import 'package:reddit_clone/firebase_options.dart';
 import 'package:reddit_clone/models/user_model.dart';
 import 'package:reddit_clone/router.dart';
