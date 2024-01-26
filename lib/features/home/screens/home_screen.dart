@@ -69,13 +69,19 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: Constants.tabWidgets[_page],
       drawer: const CommunityDrawer(),
-      endDrawer: isGuest? null :  const ProfileDrawer(),
+      endDrawer:   const ProfileDrawer(),
       bottomNavigationBar: isGuest? null : CupertinoTabBar(
         activeColor: currentTheme.iconTheme.color,
         backgroundColor: currentTheme.backgroundColor,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: ''),
+          BottomNavigationBarItem(icon: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.home),
+          ), label: ''),
+          BottomNavigationBarItem(icon: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Icon(Icons.add),
+          ), label: ''),
         ],
         onTap: onPageChanged,
         currentIndex: _page,

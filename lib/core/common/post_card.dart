@@ -154,18 +154,21 @@ class PostCard extends ConsumerWidget {
                             ),
                           ),
                           if (isTypeImage)
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.35,
-                              width: double.infinity,
-                              child: Image.network(
-                                post.link!,
-                                fit: BoxFit.cover,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0).copyWith(right: 16, left: 0),
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.35,
+                                width: double.infinity,
+                                child: Image.network(
+                                  post.link!,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           if (isTypeLink)
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 18),
+                                  const EdgeInsets.all( 18),
                               child: AnyLinkPreview(
                                 displayDirection:
                                     UIDirection.uiDirectionHorizontal,
@@ -176,7 +179,7 @@ class PostCard extends ConsumerWidget {
                             Container(
                               alignment: Alignment.bottomLeft,
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 15.0),
+                                  const EdgeInsets.all( 15.0),
                               child: Text(
                                 post.description!,
                                 style: const TextStyle(
