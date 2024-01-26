@@ -6,6 +6,9 @@ Hey there! Welcome to my Full Stack Reddit Clone project, a culmination of my jo
 
 
 
+
+
+
 ## What's Inside 🌟
 
 - **Authentication Awesomeness**: Dive in using Google OAuth 2.0 or explore as a guest.
