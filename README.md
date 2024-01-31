@@ -3,7 +3,7 @@
 Hey there! Welcome to my Full Stack Reddit Clone project, a culmination of my journey into Flutter, Firebase, and Riverpod. I'm thrilled to share this creation with you, showcasing my newfound skills and the core features of Reddit.
 
 ## Videos 📸
-might take a moment to load ⏳
+might take a moment to load ⏳ </br>
 <img src="https://github.com/abhi3940/reddit_clone/assets/75218064/c1ed41f1-2cdd-4670-86ac-339a5154d76d" alt="theme-toggle" width="250"/>
 <img src="https://github.com/abhi3940/reddit_clone/assets/75218064/466c55d1-031d-4337-a097-9e8a647781f6" alt="authentication" width="250"/>
 <img src="https://github.com/abhi3940/reddit_clone/assets/75218064/28588af5-6ea2-4420-bf8d-856c0d9998fb" alt="post" width="250"/>
